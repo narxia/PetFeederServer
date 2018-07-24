@@ -1,0 +1,103 @@
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="#">Caminar <span>by TEMPLATED</span></a></div>
+			</header>
+
+		<!-- Main -->
+			<section id="main">
+				<div class="inner">
+
+				<!-- One -->
+					<section id="one" class="wrapper style1">
+						<div class="wrapper style1">
+						<div class="content">
+							<h2><%= title %></h2>
+
+									<form action="./append">
+										<div class="row uniform">
+											<!-- Break -->
+											<h3>시간 </h3>
+											<div class="4u 12u$(small)">
+												<div class="select-wrapper">
+													<select name="AMPM" id="AMPM">
+														<option value="">- AM / PM -</option>
+														<option value="0">AM</option>
+														<option value="12">PM</option>
+													</select>
+												</div>												
+												<div class="select-wrapper">
+													<select name="hour" id="hour">
+														<option value="">- Hour -</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
+														<option value="11">11</option>
+														<option value="0">12</option>
+													</select>
+												</div>
+												<div class="select-wrapper">
+													<select name="Minute" id="Minute">
+														<option value="">- Minute -</option>
+														<option value="00">00</option>
+														<option value="10">10</option>
+														<option value="20">20</option>
+														<option value="30">30</option>
+														<option value="40">40</option>
+														<option value="50">50</option>
+													</select>
+												</div>
+											</div>
+											<h3>급식량 </h3>
+											<div class="4u 12u$(small)">
+												
+												<div class="select-wrapper">
+													<select name="Amount" id="Amount">
+														<option value="">- Amount -</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+														<option value="8">8</option>
+														<option value="9">9</option>
+														<option value="10">10</option>
+													</select>
+												</div>
+												
+											</div>											
+											<!-- Break -->
+											<div class="12u$">
+												<ul class="actions">
+													<li><input type="button" value="저장" class ="special big" onclick = "checkForm()"/></li>
+													<li><input type="reset" value="초기화" class="alt big" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+							</div>
+						</div>
+						
+					</section>
+					
+							
+
+				</div>
+			</section>
+
+
+
+		<!-- Scripts -->
