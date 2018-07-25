@@ -167,9 +167,10 @@ module.exports = function(app, fs,FeederStatus,Feeding) {
 	app.get('/Status', function(req, res) {
 		if(Number(req.query.Status) !== FeederStatus)
 			{
+				// 0: disconnect 1:wait 2: feeding start 3: feeding complete
 				FeederStatus = 	Number(req.query.Status);
 				//log  Change Status
-				console.log(req.query.Status);
+				console.log("Status : " + req.query.Status);
 			}
 		if(req.query.Log !== '')
 			{
@@ -177,5 +178,6 @@ module.exports = function(app, fs,FeederStatus,Feeding) {
 				console.log(req.query.Log);
 			}
 		res.render('Status',{Status:Feeding});
+		console.log(Feeding);
 	});
 };
