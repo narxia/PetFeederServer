@@ -2,7 +2,7 @@
 
 <!-- Header -->
 			<header id="header">
-				<div class="logo"><a href="#">Caminar <span>by TEMPLATED</span></a></div>
+				<div class="logo"><a href="/">봄이의 밥그릇</a></div>
 			</header>
 
 		<!-- Main -->
@@ -12,29 +12,47 @@
 				<!-- One -->
 					<section id="one" class="wrapper style1">
 
-						<div class="image fit flush">
+						<div class="image fit flush" style = "background:white">
 							<img src="images/pic02.jpg" alt="" />
 						</div>
+												
 						<header class="special">
-							<h2>지금 바로 밥 주기</h2>
+							<h2>
+								기기 상태								
+							</h2>
+							<p>
+							<% if(Status>0){ %>
+								연결됨
+							<% } else { %>
+								연결 안됨
+								<% } %>
+								
+							</p>
 						</header>
-						<!-- 버튼 추가-->						
-							<ul class="actions fit" >
-								<li><a href="#" class="button special fit" >지금 주기</a></li>
-							</ul>
 						
 					</section>
-					
+					<!-- two -->
 					<section id="two" class="wrapper style2">
+						<header>
+							<h2>지금 바로 밥 주기</h2>
+						</header>
+							<ul class="actions fit" >
+								
+								<% if(Status>0){ %><li><a href="./FeedingNow" class="button special fit " >지금 주기</a></li><% } else { %><li><a href="./FeedingNow" class="button special fit disabled" >지금 주기</a></li><% } %>
+								
+							</ul>
+					</section>
+					<!-- Three -->
+					<section id="three" class="wrapper style2">
 						<header>
 							<h2>자동 급식 시간 추가</h2>
 						</header>
 							<ul class="actions fit" >
 								<li><a href="./AddSchedule" class="button fit" >추가 </a></li>
 							</ul>
-					</section>
-								<!-- Three -->
-					<section id="three" class="wrapper">
+					</section>								
+					<!-- Four -->
+					<section id="four" class="wrapper">
 							 <% for(var i=0; i<length; i++){ %>
 						
 						<div class="spotlight">
@@ -44,15 +62,12 @@
 									<%= (i+1) + "번째 급식 시간" %>
 								</h3>
 								<p>
-									<%= "급식 시간 : " + Data[i].time %>
-								</p>
-								<p>
-									<%=  "급식 량 : " + Data[i].amount %>
+									<%= "급식 시간 : " + Time[i] %>
 								</p>
 								<div class="6u$ 12u$(medium)">
 									<ul class="actions">
-										<li><a href="#" class="button special big">수정</a></li>
-										<li><a href="#" class="button alt big">삭제</a></li>
+										<li><a href="<%="./EditSchedule?page="+(i) %>" class="button special big">수정</a></li>
+										<li><a href="<%="./DeleteSchedule?page=" +(i) %>" class="button alt big">삭제</a></li>
 									</ul>
 								</div>
 							</div>

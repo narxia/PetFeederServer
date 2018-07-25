@@ -1,0 +1,93 @@
+
+<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="/">봄이의 밥그릇 </a></div>
+			</header>
+
+		<!-- Main -->
+			<section id="main">
+				<div class="inner">
+
+				<!-- One -->
+					<section id="one" class="wrapper style1">
+						<div class="wrapper style1">
+						<div class="content">
+							<h2><%= title %></h2>
+
+									<form action="./edit">
+										<div class="row uniform">
+											<!-- Break -->
+											<h3>시간 </h3>
+											<div class="4u 12u$(small)">
+												<div class="select-wrapper">
+													<select name="AMPM" id="AMPM" >
+														<option value="">- AM / PM -</option>
+														<% if(AMPM=='AM'){ %>
+														<option value="0" selected>AM</option>
+													   <% } else { %>
+														<option value="0">AM</option>
+													   <% } %>
+														<% if(AMPM=='PM'){ %>
+														<option value="0" selected>PM</option>
+													   <% } else { %>
+														<option value="0">PM</option>
+													   <% } %>
+
+													</select>
+												</div>												
+												<div class="select-wrapper">
+													<select name="hour" id="hour">
+														<option value="">- Hour -</option>
+														<% if(Hour==1){ %><option value="1" selected>1</option><% } else { %><option value="1">1</option><% } %>
+														<% if(Hour==2){ %><option value="2" selected>2</option><% } else { %><option value="2">2</option><% } %>
+														<% if(Hour==3){ %><option value="3" selected>3</option><% } else { %><option value="3">3</option><% } %>
+														<% if(Hour==4){ %><option value="4" selected>4</option><% } else { %><option value="4">4</option><% } %>
+														<% if(Hour==5){ %><option value="5" selected>5</option><% } else { %><option value="5">5</option><% } %>
+														<% if(Hour==6){ %><option value="6" selected>6</option><% } else { %><option value="6">6</option><% } %>
+														<% if(Hour==7){ %><option value="7" selected>7</option><% } else { %><option value="7">7</option><% } %>
+														<% if(Hour==8){ %><option value="8" selected>8</option><% } else { %><option value="8">8</option><% } %>
+														<% if(Hour==9){ %><option value="9" selected>9</option><% } else { %><option value="9">9</option><% } %>
+														<% if(Hour==10){ %><option value="10" selected>10</option><% } else { %><option value="10">10</option><% } %>
+														<% if(Hour==11){ %><option value="11" selected>11</option><% } else { %><option value="11">11</option><% } %>
+														<% if(Hour==12){ %><option value="12" selected>12</option><% } else { %><option value="12">12</option><% } %>
+														
+													</select>
+												</div>
+												<div class="select-wrapper">
+													<select name="Minute" id="Minute" value = <%= Minute %> >
+														<option value="">- Minute -</option>
+														<% if(Minute==0){ %><option value="0" selected>00</option><% } else { %><option value="0">00</option><% } %>
+														<% if(Minute==10){ %><option value="10" selected>10</option><% } else { %><option value="10">10</option><% } %>
+														<% if(Minute==20){ %><option value="20" selected>20</option><% } else { %><option value="20">20</option><% } %>
+														<% if(Minute==30){ %><option value="30" selected>30</option><% } else { %><option value="30">30</option><% } %>
+														<% if(Minute==40){ %><option value="40" selected>40</option><% } else { %><option value="40">40</option><% } %>
+														<% if(Minute==50){ %><option value="50" selected>50</option><% } else { %><option value="50">50</option><% } %>
+													</select>
+												</div>
+											</div>
+											<!-- Break -->
+											<div class="12u$">
+												<ul class="actions">
+													<li><input type="button" value="저장" class ="special big" onclick = "checkForm()"/></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+							</div>
+						</div>
+						
+					</section>
+					
+							
+
+				</div>
+			</section>
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>

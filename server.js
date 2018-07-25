@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
 var fs  = require('fs');
-var router = require('./router/main')(app,fs);
+var FeederStatus = 0;
+var Feeding=false;
+var router = require('./router/main')(app,fs,FeederStatus,Feeding);
 
 
 app.use(express.static(__dirname +'/views'));
