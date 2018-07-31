@@ -3,7 +3,12 @@ var app = express();
 var fs  = require('fs');
 var FeederStatus = 0;
 var Feeding=false;
-var router = require('./router/main')(app,fs,FeederStatus,Feeding);
+var objJson;
+var bInit=true;
+
+var moment =  require('moment');
+var router = require('./router/main')(app,fs,FeederStatus,Feeding,bInit);
+var Schedule = require('./Control/Schedule')(fs,moment,Feeding,objJson,bInit);
 
 
 app.use(express.static(__dirname +'/views'));

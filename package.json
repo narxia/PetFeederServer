@@ -2,9 +2,18 @@
   "name": "petfeederserver",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,10 +24,5 @@
   "bugs": {
     "url": "https://github.com/narxia/PetFeederServer/issues"
   },
-  "homepage": "https://github.com/narxia/PetFeederServer#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-  }
+  "homepage": "https://github.com/narxia/PetFeederServer#readme"
 }
