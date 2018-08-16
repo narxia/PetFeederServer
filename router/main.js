@@ -1,6 +1,7 @@
-module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
-	//main Page
+module.exports = function(app, fs, FeederStatus, bJsonInit,logger,objJson, bInit) 
 
+{
+	//main Page
 	app.get('/', function(req, res) {
 		fs.readFile(__dirname + '/../data/' + 'Setting.json', 'utf8', function(err, data) {
 			//console.log( data );
@@ -27,7 +28,7 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 				var count = objJson.count;
 
 				objJson.time.push(time);
-
+				logger("Append : "+time);
 				objJson.count = objJson.time.length;
 				fs.writeFile(
 					__dirname + '/../data/Setting.json',
@@ -36,6 +37,7 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 					function(err, data) {}
 				);
 				bJsonInit= true;
+				logger('Append Schedule : '+ time);
 				res.redirect('/');
 			});
 		} else {
@@ -52,11 +54,13 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 				var hour = Number(req.query.AMPM) + Number(req.query.hour);
 				var Min = req.query.Minute;
 				var time = hour + ':' + Min;
+				
 
 				var count = objJson.count;
 				if (page >= 0 && page < objJson.time.length) {
+					var oldtime = objJson.time[page];
 					objJson.time[page] = time;
-
+				
 					objJson.count = objJson.time.length;
 					fs.writeFile(
 						__dirname + '/../data/Setting.json',
@@ -64,8 +68,10 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 						'utf8',
 						function(err, data) {}
 					);
+					logger('Update Schedule : '+ oldtime +' => '+ time);
 				}
 				bJsonInit= true;
+				
 				res.redirect('/');
 			});
 		} else {
@@ -80,9 +86,8 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 				var page = Number(req.query.page);
 				var count = objJson.count;
 				if (page >= 0 && page < objJson.time.length) {
+					var oldtime = objJson.time[page];
 					objJson.time.splice(page, 1);
-					console.log(page);
-					console.log(objJson.time);
 					objJson.count = objJson.time.length;
 					fs.writeFile(
 						__dirname + '/../data/Setting.json',
@@ -90,6 +95,7 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 						'utf8',
 						function(err, data) {}
 					);
+					logger('delete Schedule : '+ oldtime);
 				}
 				bJsonInit= true;
 				res.redirect('/');
@@ -143,7 +149,7 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 	});
 	// now Feeding Button
 	app.get('/FeedingNow', function(req, res) {
-		Feeding = true;
+		global.Feeding = true;
 		res.redirect('/');
 	});
 	// Check Status from Feeder Device
@@ -152,19 +158,19 @@ module.exports = function(app, fs, FeederStatus, Feeding,bJsonInit) {
 			// 0: disconnect 1:wait 2: feeding
 			FeederStatus = Number(req.query.Status);
 			//log  Change Status
-			console.log('Status : ' + req.query.Status);
+			logger('Client Status : ' + req.query.Status);
 		}
 		var FeedingStatus;
-		if (Feeding === false) {
+		if (global.Feeding === false) {
 			FeedingStatus = 0;
 		} else {
 			if (FeederStatus == 2) {
 				//Feeder Move Complete
-				Feeding = false;
+				global.Feeding = false;
 				FeedingStatus = 2;
 			} else FeedingStatus = 1; //Feeder need Move
 		}
 		res.render('Status', { Status: '*' + Number(FeedingStatus) });
-		console.log(FeedingStatus);
+		
 	});
 };

@@ -1,5 +1,5 @@
-module.exports = function(fs, moment, Feeding, objJson, bInit) {
-	//module.exports = function( ) {
+module.exports = function(fs,  objJson, bInit,logger) {
+	var moment = require('moment');
 	setInterval(function() {
 		if (bInit) {
 			var data = fs.readFileSync(__dirname + '/../data/' + 'Setting.json', 'utf8');
@@ -27,8 +27,8 @@ module.exports = function(fs, moment, Feeding, objJson, bInit) {
 			f_minute = Number(splitString[1]);
 			if (c_hour == f_hour && c_minute == f_minute && moment().seconds() === 0) 
 			{
-				console.log(arrayTime[i] + '  NOW FEEDING !!!!');	
-				Feeding = true;
+				logger('['+i+']'+arrayTime[i] + '  NOW FEEDING !!!!');	
+				global.Feeding = true;
 			}
 		}
 
