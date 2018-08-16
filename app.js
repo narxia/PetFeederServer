@@ -7,34 +7,19 @@ var objJson;
 var bInit = true;
 
 
-
-var winston = require('winston');
-
-require('winston-daily-rotate-file');
-
-
-//logger 설정
-var transport = new winston.transports.DailyRotateFile({
-	filename: './log/%DATE%.log',
-	datePattern: 'YYYY-MM-DD-HH',
-	zippedArchive: true,
-	maxSize: '20m',
-	maxFiles: '14d'
-});
-
-transport.on('rotate', function(oldFilename, newFilename) {
-	// do something fun
-});
-
-var logger = winston.createLogger({
-	format: winston.format.combine(winston.format.timestamp(), winston.format.splat(), winston.format.simple()),
-	transports: [transport]
+const winston = require('winston');
+const tsFormat = () => (new Date()).toLocaleTimeString();
+const logger = winston.createLogger({
+ 	format: winston.format.combine(winston.format.timestamp(), winston.format.splat(), winston.format.simple()),
+	transports: [ new (winston.transports.Console)({
+      timestamp: tsFormat
+    })]
 });
 
 
 var logging = function(log) {
 	logger.info(log);
-	console.log(log);
+	//console.log(log);
 };
 var router = require('./router/main')(app, fs, FeederStatus, bInit, logging);
 var Schedule = require('./Control/Schedule')(fs,objJson,bInit,logging);

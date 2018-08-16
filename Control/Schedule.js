@@ -4,7 +4,7 @@ module.exports = function(fs,  objJson, bInit,logger) {
 		if (bInit) {
 			var data = fs.readFileSync(__dirname + '/../data/' + 'Setting.json', 'utf8');
 			{
-				console.log('Read Json File');
+				logger('Read Json File');
 				objJson = JSON.parse(data);
 				//console.log(objJson.time);
 			}
